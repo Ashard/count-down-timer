@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Count down</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="flex-container">
-        <div class="timer-flex-item">
-            <p>WE'RE LAUNCHING SOON</p>
-            <div class="tiles-row-container">
-                <div class="tile-container">
-                    <div class="tile-bg">
-                        <p class="counter-text-styling" id="days-counter">00</p>
-                    </div>
-                    <p>days</p>
+      <div class="timer-flex-item">
+        <p>WE'RE LAUNCHING SOON</p>
 
-                </div>
-
-                <div class="tile-container">
-                    <div class="tile-bg">
-                        <p class="counter-text-styling" id="hours-counter">00</p>
-                    </div>
-                    
-                    <p>hours</p>
-                </div>
-
-                <div class="tile-container">
-                    <div class="tile-bg">
-                        <p class="counter-text-styling" id="minutes-counter">00</p>
-                    </div>
-                    <p>minutes</p>
-                </div>
-
-                <div class="tile-container">
-                    <div class="tile-bg">
-                        <p class="counter-text-styling" id="seconds-counter">00</p>
-                    </div>
-                    <p>seconds</p>
-                </div>
+        <div class="tiles-row-container">
+          <div class="tile-container">
+            <div class="tile-top">
+              <p id="days-counter" class="counter-text-styling">56</p>
             </div>
+            <div class="tile-bottom">
+              <p id="days-counter" class="counter-text-styling">56</p>
+            </div>
+            <p>days</p>
+          </div>
+
+          <div class="tile-container">
+            <div class="tile-bg">
+              <p class="counter-text-styling" id="hours-counter">00</p>
+            </div>
+
+            <p>hours</p>
+          </div>
+
+          <div class="tile-container">
+            <div class="tile-bg">
+              <p class="counter-text-styling" id="minutes-counter">00</p>
+            </div>
+            <p>minutes</p>
+          </div>
+
+          <div class="tile-container">
+            <div class="tile-bg">
+              <p class="counter-text-styling" id="seconds-counter">00</p>
+            </div>
+            <p>seconds</p>
+          </div>
         </div>
-        <div class="socials-flex-item">
-            Social
-        </div>
+      </div>
+      <div class="socials-flex-item">Social</div>
     </div>
-    <script src="main.js"></script>
-</body>
+    <!-- <script src="main.js"></script> -->
+  </body>
 </html>
