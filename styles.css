@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 .flex-container {
@@ -25,14 +26,6 @@
 }
 
 
-.tile-top, .tile-bottom {
-    width: 150px;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .tile-top {
     background-color: #282828;
     border-top-right-radius: 8px;
@@ -45,32 +38,23 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     box-shadow: 0px 3px 5px black;
-}
-
-.tile-top .counter-text-styling {
-    position: relative;
-    top: 37.5px;
-}
-
-
-.tile-bottom .counter-text-styling {
-    position: relative;
-    /* top: 0; */
-    bottom: 37.5px;
-}
-
-/* .tile-bg {
     display: flex;
-    background-image: url("tile.png");
-    background-size: cover;
-    height: 150px;
-    width: 150px;
-    justify-content: center;
-    align-items: center;
-} */
+    align-items: flex-end;
+}
 
-.counter-text-styling {
+
+/* How does height .75em and padding 0.25em work?? 
+Why should we work with em? 
+take time to learn the basics... it will help much more in the future 
+than just copy pasting code..
+really understand whats happening
+and what does box-sizing: border-box */
+.tile-top, .tile-bottom {
+    height: .75em;  
+    overflow: hidden;
+    line-height: 1;
     color: rgb(248, 80, 108);
     font-family: 'Roboto', sans-serif;
-    font-size: 68px;
+    font-size: 6em;
+    padding: 0.25em;
 }
