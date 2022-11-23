@@ -42,13 +42,6 @@
     align-items: flex-end;
 }
 
-
-/* How does height .75em and padding 0.25em work?? 
-Why should we work with em? 
-take time to learn the basics... it will help much more in the future 
-than just copy pasting code..
-really understand whats happening
-and what does box-sizing: border-box */
 .tile-top, .tile-bottom {
     height: .75em;  
     overflow: hidden;
@@ -57,4 +50,41 @@ and what does box-sizing: border-box */
     font-family: 'Roboto', sans-serif;
     font-size: 6em;
     padding: 0.25em;
+}
+
+.tile-top.flip::before {
+    height: 0.5em;
+    line-height: 1;
+    content: "56";
+    position: absolute;
+    transform: rotateX(0deg);
+    transform-origin: bottom;
+    /* background-color: white; */
+    animation: top-flip 1500ms;
+    overflow: hidden;
+}
+
+@keyframes top-flip {
+    100% {
+        transform: rotateX(90deg);
+    }
+}
+
+.tile-bottom.flip::after {
+    height: 0.5em;
+    content: "56";
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    /* background-color: white; */
+    overflow: hidden;
+    transform: rotateX(0deg);
+    transform-origin: center;
+    animation: bottom-flip 1500ms 1500ms;
+}
+
+@keyframes bottom-flip {
+    100% {
+        transform: rotateX(90deg);
+    }
 }
