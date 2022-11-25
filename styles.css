@@ -54,11 +54,13 @@
 }
 
 
-.tile-container.flip::before {
+.tile-container.flip::before, 
+.tile-container.flip::after {
     content: "56";
     position: absolute;
     overflow: hidden;
     box-sizing: border-box;
+    background-color: #282828;
     padding: 0.25em;
     height: 0.75em;
     width: 100%;
@@ -67,11 +69,30 @@
     border-bottom: 1px solid white;
     text-align: center;
     transform-origin: bottom;
-    animation: top-flip 1000ms ease-in;
+    animation: top-flip 250ms ease-in;
+}
+
+.tile-container.flip::after {
+    background-color: #373737;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    transform: rotateX(90deg);
+    transform-origin: top;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom: none;
+    animation: bottom-flip 250ms ease-out 250ms;
 }
 
 @keyframes top-flip {
     100% {
         transform: rotateX(90deg);
+    }
+}
+
+@keyframes bottom-flip {
+    100% {
+        transform: rotateX(0deg)
     }
 }
