@@ -54,10 +54,10 @@
 }
 
 
-.tile-container.flip::before, 
-.tile-container.flip::after {
-    content: "56";
-    position: absolute;
+.tile-top.flip-top, 
+.tile-bottom.flip-bottom {
+    /* content: "56"; */
+    /* position: absolute; */
     overflow: hidden;
     box-sizing: border-box;
     background-color: #282828;
@@ -72,17 +72,18 @@
     animation: top-flip 250ms ease-in;
 }
 
-.tile-container.flip::after {
+.tile-bottom.flip-bottom {
     background-color: #373737;
     bottom: 0;
     display: flex;
     align-items: flex-end;
     transform: rotateX(90deg);
     transform-origin: top;
+    border-radius: 0px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-bottom: none;
-    animation: bottom-flip 250ms ease-out 250ms;
+    animation: bottom-flip 250ms ease-out 250ms forwards;
 }
 
 @keyframes top-flip {
