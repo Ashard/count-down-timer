@@ -54,10 +54,10 @@
 }
 
 
-.tile-top.flip-top, 
-.tile-bottom.flip-bottom {
+.flip-top, 
+.flip-bottom {
     /* content: "56"; */
-    /* position: absolute; */
+    position: absolute;
     overflow: hidden;
     box-sizing: border-box;
     background-color: #282828;
@@ -72,7 +72,7 @@
     animation: top-flip 250ms ease-in;
 }
 
-.tile-bottom.flip-bottom {
+.flip-bottom {
     background-color: #373737;
     bottom: 0;
     display: flex;

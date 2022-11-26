@@ -1,10 +1,46 @@
-const tileTop = document.querySelector(".tile-top");
-// console.log();
-// add elements here and add the flip class to them instead of modifying the original
-tileTop.classList.add("flip-top");
+var currentNumber = 56;
 
-const tileBottom = document.querySelector(".tile-bottom");
-tileBottom.classList.add("flip-bottom");
+function flipCard(tileContainer) {
+  console.log("flipCard called");
+  const nextNumber = currentNumber - 1;
+  const newTopDiv = document.createElement("div");
+  newTopDiv.innerHTML = currentNumber;
+  newTopDiv.classList.add("tile-top", "flip-top");
+  tileContainer.appendChild(newTopDiv);
+
+  newTopDiv.addEventListener("animationstart", (e) => {
+    const topDiv = document.querySelector(".tile-top");
+    topDiv.innerHTML = nextNumber;
+  });
+
+  newTopDiv.addEventListener("animationend", (e) => {
+    newTopDiv.remove();
+  });
+
+  const newBottomDiv = document.createElement("div");
+  newBottomDiv.innerHTML = nextNumber;
+  newBottomDiv.classList.add("tile-bottom", "flip-bottom");
+  tileContainer.appendChild(newBottomDiv);
+  newBottomDiv.addEventListener("animationend", (e) => {
+    newBottomDiv.remove();
+    const bottomDiv = document.querySelector(".tile-bottom");
+    bottomDiv.innerHTML = nextNumber;
+    // currentNumber -= 1;
+    // flipCard(tileContainer);
+  });
+}
+
+// flipCard()
+
+// setInterval(() => {
+const tileContainer = document.querySelector(".tile-container");
+flipCard(tileContainer);
+// }, 3000);
+
+// bottomDiv.innerHTML = "55";
+
+// tileTop.classList.add("flip-top");
+// tileBottom.classList.add("flip-bottom");
 // for (var i = 0; i < tile.children.length; i++) {
 //   var child = tile.children[i];
 //   // console.log(child);
