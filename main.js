@@ -1,52 +1,79 @@
-var currentNumber = 56;
 const countDownTo = new Date("2023-02-13");
 const currentTime = new Date();
 const timeRemaining = countDownTo - currentTime;
-// var globalDaysRemaining = globalTimeRemaining.getDate();
-const initialTimeRemaining = countDownTo - currentTime;
-const initialDaysRemaining = getDaysRemaining(timeRemaining);
-const initialHoursRemaining = getHoursRemaining(timeRemaining);
-const initialMinutesRemaining = getMinutesRemaining(timeRemaining);
-const initialSecondsRemaining = getSecondsRemaining(timeRemaining);
+
+var globalDaysRemaining = getDaysRemaining(timeRemaining);
+const daysDiv = document.querySelectorAll(".days");
+for (var i = 0; i < daysDiv.length; i++) {
+  daysDiv[i].innerHTML = globalDaysRemaining;
+}
+
+var globalHoursRemaining = getHoursRemaining(timeRemaining);
+const hoursDiv = document.querySelectorAll(".hours");
+for (var i = 0; i < hoursDiv.length; i++) {
+  hoursDiv[i].innerHTML = globalHoursRemaining;
+}
+
+var globalMinutesRemaining = getMinutesRemaining(timeRemaining);
+const minutesDiv = document.querySelectorAll(".minutes");
+for (var i = 0; i < minutesDiv.length; i++) {
+  minutesDiv[i].innerHTML = globalMinutesRemaining;
+}
+
+var globalSecondsRemaining = getSecondsRemaining(timeRemaining);
+const secondsDiv = document.querySelectorAll(".seconds");
+for (var i = 0; i < secondsDiv.length; i++) {
+  secondsDiv[i].innerHTML = globalSecondsRemaining;
+}
 
 setInterval(() => {
   const currentTime = new Date();
   const timeRemaining = countDownTo - currentTime;
 
   const daysRemaining = getDaysRemaining(timeRemaining);
-  if (daysRemaining != initialDaysRemaining) {
-    // get the days remaining card and flip it with the flip card animation
-    // set the initial days remaining to the new value
+  if (daysRemaining != globalDaysRemaining) {
+    const daysRemainingDiv = document.querySelector(".days-remaining-div");
+    flipCard(daysRemainingDiv, daysRemaining);
+    globalDaysRemaining = daysRemaining;
   }
 
   const hoursRemaining = getHoursRemaining(timeRemaining);
-  if (hoursRemaining != initialHoursRemaining) {
-    // same as above a
+  if (hoursRemaining != globalHoursRemaining) {
+    const hoursRemainingDiv = document.querySelector(".hours-remaining-div");
+    flipCard(hoursRemainingDiv, hoursRemaining);
+    globalHoursRemaining = hoursRemaining;
   }
 
   const minutesRemaining = getMinutesRemaining(timeRemaining);
-  if (minutesRemaining != initialMinutesRemaining) {
-    // same as above
+  if (minutesRemaining != globalMinutesRemaining) {
+    const minutesRemainingDiv = document.querySelector(
+      ".minutes-remaining-div"
+    );
+    flipCard(minutesRemainingDiv, minutesRemaining);
+    globalMinutesRemaining = minutesRemaining;
   }
 
   const secondsRemaining = getSecondsRemaining(timeRemaining);
-  if (secondsRemaining != initialSecondsRemaining) {
-    const secondsDiv = document.querySelector("seconds-div");
-    flipCard(tileContainer, secondsRemaining);
+  if (secondsRemaining != globalSecondsRemaining) {
+    const secondsDiv = document.querySelector(".seconds-div");
+    flipCard(secondsDiv, secondsRemaining);
+    globalSecondsRemaining = secondsRemaining;
   }
 
-  console.log("\n");
-  console.log("days remaining-->" + daysRemaining);
-  console.log("hours remaining-->" + hoursRemaining);
-  console.log("minutes remaining-->" + minutesRemaining);
-  console.log("seconds remaining-->" + secondsRemaining);
+  if (false) {
+    console.log("\n");
+    console.log("days remaining-->" + daysRemaining);
+    console.log("hours remaining-->" + hoursRemaining);
+    console.log("minutes remaining-->" + minutesRemaining);
+    console.log("seconds remaining-->" + secondsRemaining);
+  }
 
   //   console.log(timeRemaining.padStart(2, "0"));
   //   console.log(currentTime.toString());
   // console.log(countDownTo);
   //   const timeRemainingDate = new Date(timeRemaining);
   //   console.log(timeRemainingDate.toString());
-}, 1000);
+}, 250);
 
 function getDaysRemaining(remainingTimeMs) {
   return Math.ceil(remainingTimeMs / (1000 * 60 * 60 * 24));
@@ -64,19 +91,16 @@ function getSecondsRemaining(remainingTimeMs) {
   return new Date(remainingTimeMs).getSeconds();
 }
 
-// function getHoursRemaining(remainingTimeMs) {
-//   return Math.ceil(remainingTimeMs / (1000 * 60 * 60));
-// }
-
 function flipCard(tileContainer, currentNumber) {
-  const nextNumber = currentNumber - 1;
+  const nextNumber =
+    currentNumber == 0 ? 59 : String(currentNumber - 1).padStart(2, "0");
   const newTopDiv = document.createElement("div");
-  newTopDiv.innerHTML = currentNumber;
+  newTopDiv.innerHTML = String(currentNumber).padStart(2, "0");
   newTopDiv.classList.add("tile-top", "flip-top");
   tileContainer.appendChild(newTopDiv);
 
   newTopDiv.addEventListener("animationstart", (e) => {
-    const topDiv = document.querySelector(".tile-top");
+    const topDiv = tileContainer.querySelector(".tile-top");
     topDiv.innerHTML = nextNumber;
   });
 
@@ -90,10 +114,8 @@ function flipCard(tileContainer, currentNumber) {
   tileContainer.appendChild(newBottomDiv);
   newBottomDiv.addEventListener("animationend", (e) => {
     newBottomDiv.remove();
-    const bottomDiv = document.querySelector(".tile-bottom");
+    const bottomDiv = tileContainer.querySelector(".tile-bottom");
     bottomDiv.innerHTML = nextNumber;
-    // currentNumber -= 1;
-    // flipCard(tileContainer);
   });
 }
 
